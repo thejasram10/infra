@@ -1,22 +1,9 @@
-terraform {
-  required_version = ">= 1.11.0"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
-    }
-  }
+output "rds_endpoint" {
+  description = "RDS instance endpoint"
+  value       = module.rds.db_instance_endpoint
 }
 
-provider "aws" {
-  region = "us-east-1"
-
-  default_tags {
-    tags = {
-      Project   = "pharma"
-      Env       = "dev"
-      ManagedBy = "terraform"
-    }
-  }
+output "eks_cluster_name" {
+  description = "EKS cluster name"
+  value       = module.eks.cluster_name
 }
